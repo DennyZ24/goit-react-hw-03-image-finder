@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Section from "components/Section/Section";
 import ImageGallery from 'components/ImageGallery/ImageGallery';
-import SearchBar from "components/SearchBar/SearchBar.jsx";
+import Searchbar from "components/Searchbar/Searchbar";
 
 class App extends Component {
   state = {
@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <SearchBar onSubmit={this.handleInputSubmit} />
+        <Searchbar onSubmit={this.handleInputSubmit} />
         
         <Section>
           <ImageGallery searchValue={this.state.searchValue} />

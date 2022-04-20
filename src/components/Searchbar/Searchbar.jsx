@@ -1,9 +1,9 @@
-import { Component } from 'react';
-import { FaSearch } from 'react-icons/fa';
-import s from "components/SearchBar/SearchBar.module.css";
+import React, {Component} from 'react';
+// import { FaSearch } from 'react-icons/fa';
+import s from "components/Searchbar/SearchBar.module.css";
 
 
-class SearchBar extends Component {
+class Searchbar extends Component {
   state = {
     searchValue: ''
   }
@@ -27,7 +27,7 @@ class SearchBar extends Component {
       <header className={s.SearchBar}>
        <form className={s.SearchForm} onSubmit={this.handleSubmit}>
           <button type="submit" className={s.Button}>
-            <FaSearch/>
+            {/* <FaSearch/> */}
           </button>
 
           <input
@@ -40,12 +40,10 @@ class SearchBar extends Component {
             placeholder="Search images and photos"
             onChange={this.handleInputeChange}
           />
-        </form>
-
-        
+        </form>    
       </header>
     )
   }
 }
 
-export default SearchBar;
+export default Searchbar;
