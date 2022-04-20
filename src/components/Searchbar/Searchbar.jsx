@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { FaSearch } from 'react-icons/fa';
+import s from "components/Searchbar/Searchbar.module.css";
 
 
 
@@ -24,15 +25,15 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <header className={'s.SearchBar'}>
-       <form className={'s.SearchForm'} onSubmit={this.handleSubmit}>
-          <button type="submit" className={'s.Button'}>
+      <header className={s.SearchBar}>
+       <form className={s.SearchForm} onSubmit={this.handleSubmit}>
+          <button type="submit" className={s.Button}>
             <FaSearch/>
           </button>
 
           <input
             name='searchValue'
-            className ={'s.Input'}
+            className ={s.Input}
             type="text"
             value={this.state.searchValue}
             autoComplete="off"
