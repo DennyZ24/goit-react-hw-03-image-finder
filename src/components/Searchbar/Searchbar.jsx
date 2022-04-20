@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import s from "components/Searchbar/SearchBar.module.css";
+import s from "components/SearchBar/SearchBar.module.css";
 import { FaSearch } from 'react-icons/fa';
 
 
-class Searchbar extends Component {
+class SearchBar extends Component {
   state = {
     searchValue: ''
   }
@@ -48,10 +48,4 @@ class Searchbar extends Component {
   }
 }
 
-export default Searchbar;
-
-  // <IconContext.Provider value={{ color: "blue", className: "global-class-name" }}>
-  //               <div>
-  //                 <FaSearch />
-  //               </div>
-  //             </IconContext.Provider>
+export default SearchBar;
