@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Section from "components/Section/Section";
-import Searchbar from "components/Searchbar/Searchbar";
-import ImageGallery from 'components/ImageGallery/ImageGallery'
+import Searchbar from "components/Searchbar/SearchBar";
+import ImageGallery from 'components/ImageGallery/ImageGallery';
 
 class App extends Component {
   state = {
@@ -9,16 +9,14 @@ class App extends Component {
   }
   
   handleInputSubmit = (searchValue) => {
-    this.setState({searchValue})
+    this.setState({searchValue: searchValue.toLowerCase()})
   }
   
   render() {
     return (
       <>
-        <Section>
-          <Searchbar onSubmit={this.handleInputSubmit} />
-        </Section>
-
+        <Searchbar onSubmit={this.handleInputSubmit} />
+        
         <Section>
           <ImageGallery searchValue={this.state.searchValue} />
         </Section>

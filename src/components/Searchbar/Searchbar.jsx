@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import s from "components/Searchbar/SearchBar.module.css";
+import { FaSearch } from 'react-icons/fa';
+
 
 class Searchbar extends Component {
   state = {
@@ -9,6 +12,8 @@ class Searchbar extends Component {
     e.preventDefault();
 
     this.props.onSubmit(this.state.searchValue)
+
+    this.setState({searchValue:''})
   }
 
   handleInputeChange = (e) => {
@@ -19,15 +24,15 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <header className="searchbar">
-       <form className="form" onSubmit={this.handleSubmit}>
-          <button type="submit" className="button">
-            <span className="button-label">Search</span>
+      <header className={s.Searchbar}>
+       <form className={s.SearchForm} onSubmit={this.handleSubmit}>
+          <button type="submit" className={s.Button}>
+            <FaSearch/>
           </button>
 
           <input
             name='searchValue'
-            className ="input"
+            className ={s.Input}
             type="text"
             value={this.state.searchValue}
             autoComplete="off"
@@ -36,9 +41,17 @@ class Searchbar extends Component {
             onChange={this.handleInputeChange}
           />
         </form>
+
+        
       </header>
     )
   }
 }
 
 export default Searchbar;
+
+  // <IconContext.Provider value={{ color: "blue", className: "global-class-name" }}>
+  //               <div>
+  //                 <FaSearch />
+  //               </div>
+  //             </IconContext.Provider>
