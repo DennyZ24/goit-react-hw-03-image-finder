@@ -68,12 +68,15 @@ class ImageGallery extends Component {
         {images.length > 0
           &&
           <>
-          <ul className={s.ImageGallery}>
-            <ImageGalleryItem images={images} />
-          </ul>
-          
+            <ul className={s.ImageGallery}>
+              <ImageGalleryItem images={images} />
+            </ul>
+            <div className={s.container}>
+              <ButtonLoadMore onClick={this.handleClick} />
+            </div>
           </>
         }
+
         {loading &&
           <div className={s.container}>
             <TailSpin
@@ -84,12 +87,7 @@ class ImageGallery extends Component {
             />
           </div>
         }
-
-        {images.length > 0 && loading !== 'true' ?
-          <div className={s.container}>
-            <ButtonLoadMore onClick={this.handleClick} />
-          </div> : null}
-
+      
         {this.state.error && <p>{this.state.error.message}</p>}
       </>
     )

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-// import { FaSearch } from 'react-icons/fa';
-import s from "components/Searchbar/SearchBar.module.css";
+import { FaSearch } from 'react-icons/fa';
+import s from "components/Searchbar/Searchbar.module.css";
 
 
 class Searchbar extends Component {
@@ -27,7 +27,7 @@ class Searchbar extends Component {
       <header className={s.SearchBar}>
        <form className={s.SearchForm} onSubmit={this.handleSubmit}>
           <button type="submit" className={s.Button}>
-            {/* <FaSearch/> */}
+            <FaSearch/>
           </button>
 
           <input
