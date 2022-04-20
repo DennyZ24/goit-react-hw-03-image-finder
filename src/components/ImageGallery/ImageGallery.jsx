@@ -12,6 +12,7 @@ class ImageGallery extends Component {
     error: null,
     page: 1,
   }
+  
 
   async componentDidUpdate(prevProps, prevState) {
     const prevSearchValue = prevProps.searchValue;
@@ -19,45 +20,39 @@ class ImageGallery extends Component {
 
     if (nextSearchValue !== prevSearchValue) {
       
-      this.setState({ loading: true, images: []});
+      this.setState({ loading: true, images: [], page: 1});
 
         try {
           const images = await fetchImages(nextSearchValue, 1);
           if (images.length === 0) {
             throw new Error(`изображение по запросу "${nextSearchValue}" не найдено`);
           }
-          this.setState({ images, error: null })
+          this.setState((prevState => ({ images, error: null, page: prevState.page += 1 })));
         } catch (error) {
           this.setState({error, images: []})
         } finally {
           this.setState({ loading: false });
       }
     }
+  }
 
-    if (prevState.page !== this.state.page) {
-      this.setState({ loading: true });
 
-        try {
-          const images = await fetchImages(nextSearchValue, this.state.page);
+  async fetchMoreImg() {
+    try {
+          const images = await fetchImages(this.props.searchValue, this.state.page);
 
           const newImages = this.state.images.concat(images);
 
-          this.setState({ images: newImages, error: null })
+          this.setState(prevState => ({page: prevState.page += 1, images: newImages, error: null}))
         } catch (error) {
-          this.setState({error, images: []})
+         this.setState({error, images: []})
         } finally {
           this.setState({ loading: false });
-      }
     }
-
-    
   }
 
   handleClick = () => {
-    this.setState((prevState => {
-      const newPage = prevState.page += 1;
-      return {page: newPage}
-    }))
+    this.fetchMoreImg();
   }
 
   render() {
@@ -87,7 +82,8 @@ class ImageGallery extends Component {
             />
           </div>
         }
-      
+        
+
         {this.state.error && <p>{this.state.error.message}</p>}
       </>
     )
