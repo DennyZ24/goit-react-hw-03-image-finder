@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Section from "components/Section/Section";
 import ImageGallery from 'components/ImageGallery/ImageGallery';
-import SearchBar from "components/SearchBar/SearchBar";
+import SearchBar from "components/SearchBar/SearchBar.jsx";
 
 class App extends Component {
   state = {
